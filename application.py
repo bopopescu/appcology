@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, g, Response, render_template
 import bot
+import os
 
 # Elastic Beanstalk initalization
 application = Flask(__name__)

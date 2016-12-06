@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, g, Response
 from helpers import send_response
 from receive import Receiver
+from send import Message
 import json
 import requests
 
@@ -17,10 +18,9 @@ def response_handler(request):
 	    text = receiver.get_text()
 
 	    # Send message back
-	    m = Message(text, user_id)
-    	m.send()
-
-    	return send_response()
-
+	    Message(text, user_id).send()
+    	
 	except:
-		return send_response()
+		pass
+
+	return send_response()
