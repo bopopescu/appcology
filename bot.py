@@ -5,7 +5,7 @@ from receive import Receiver
 from send import Message
 import json
 import requests
-
+import random
 '''
 to deploy: 
 git add .
@@ -38,8 +38,8 @@ def response_handler(request):
 	    # Send message back
 	    Message(response_text, user_id).send()
     	
-	except e:
-		print(e, file=sys.stderr)
+	except Exception as inst:
+		print(inst, file=sys.stderr)
 		pass
 
 	return send_response()
@@ -50,7 +50,13 @@ def check_for_greeting(sentence):
     """If any of the words in the user's input was a greeting, return a greeting response"""
     for word in sentence.words:
         if word.lower() in GREETING_KEYWORDS:
-            return random.choice(GREETING_RESPONSES)
+            return random.choice(GREETING_KEYWORDS)
     return "I don't know what you said, fam."
+
+
+#def get_facebook_data():
+
+
+
 
 
