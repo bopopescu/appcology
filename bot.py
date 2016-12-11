@@ -54,7 +54,7 @@ def check_for_greeting(sentence):
     """If any of the words in the user's input was a greeting, return a greeting response"""
     for word in sentence.words:
         if word.lower() in GREETING_KEYWORDS:
-            return random.choice(GREETING_KEYWORDS)
+            return GREETING_RESPONSES[random.randint(0, len(GREETING_RESPONSES)-1)]
     return "I don't know what you said, fam."
 
 
