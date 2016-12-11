@@ -6,6 +6,7 @@ from send import Message
 import json
 import requests
 import random
+import sys
 '''
 to deploy: 
 git add .
@@ -16,6 +17,9 @@ git push heroku master
 to test before you deploy
 source app/bin/activate (do only once in each terminal session)
 python application.py
+'''
+'''
+SEPERATE TERMINAL WINDOWS
 '''
 
 GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's up",)
