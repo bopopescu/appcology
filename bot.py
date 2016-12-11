@@ -6,6 +6,10 @@ import json
 import requests
 
 
+GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's up",)
+
+GREETING_RESPONSES = ["'sup bro", "hey", "*nods*", "hey you get my snap?"]
+
 def response_handler(request):
 	try:
 		# Receive request
@@ -15,12 +19,17 @@ def response_handler(request):
 	    user_id = receiver.get_sender_messenger_id()
 
 	    # Text from user
-	    text = receiver.get_text()
+	    text = receiver.get_text(hi)
 
 	    # Send message back
-	    Message(text, user_id).send()
+	    Message(text, user_id).send(hi)
     	
 	except:
 		pass
 
 	return send_response()
+
+
+# Sentences we'll respond with if the user greeted us
+
+

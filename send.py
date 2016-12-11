@@ -1,7 +1,7 @@
 # Send API script for RCFBBotTemplate
 import requests
 
-ACCESS_TOKEN = ''
+ACCESS_TOKEN = 'EAAZAZC6jHx2vcBAEIwv2jUBIcXjlr2UgVvKHPJ9QgsWIhEggalW1K96YAuMXkKQMux9zjsWQfPUXWVsGK0ooWvGlwsZCoZAZClfpE6sv5Ntg9ECiJfruphS7gc9DQ1hy5DuGM9juzf7fb0eZCbUiHhhXrpJUELsNQucHOivKoLDgZDZD'
 SEND_API_URL = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + ACCESS_TOKEN
 
 # NORMAL MESSAGES
