@@ -33,8 +33,10 @@ def response_handler(request):
 	    # Text from user
 	    text = receiver.get_text()
 
+	    response_text = check_for_greeting(text)
+
 	    # Send message back
-	    Message(text, user_id).send()
+	    Message(response_text, user_id).send()
     	
 	except e:
 		print(e, file=sys.stderr)
@@ -49,4 +51,6 @@ def check_for_greeting(sentence):
     for word in sentence.words:
         if word.lower() in GREETING_KEYWORDS:
             return random.choice(GREETING_RESPONSES)
+    return "I don't know what you said, fam."
+
 
