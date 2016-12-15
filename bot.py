@@ -8,7 +8,6 @@ import requests
 import random
 import sys
 from facepy import GraphAPI
-# import facebook
 
 '''
 to deploy: 
@@ -35,7 +34,6 @@ SEPERATE TERMINAL WINDOWS
 GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's",)
 GREETING_RESPONSES = ["'sup bro", "hey", "*nods*", "hey you get my snap?"]
 
-# graph = facebook.GraphAPI(access_token=ACCESS_TOKEN, version='2.2')
 graph = GraphAPI(ACCESS_TOKEN)
 
 def response_handler(request):
@@ -72,7 +70,6 @@ def check_for_greeting(sentence):
 
 
 def get_facebook_data():
-
 	events = graph.get('me/events')
 	data = []
 	for event in events['data']:
