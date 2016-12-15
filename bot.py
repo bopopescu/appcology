@@ -2,16 +2,26 @@ from __future__ import print_function
 from flask import Flask, request, jsonify, g, Response
 from helpers import send_response
 from receive import Receiver
-from send import Message
+from send import Message, ACCESS_TOKEN
 import json
 import requests
 import random
 import sys
+from facepy import GraphAPI
+# import facebook
+
 '''
 to deploy: 
 git add .
 git commit -m "message"
 git push heroku master
+
+
+how to push to github
+git add .
+git commit -m "message"
+git push origin master
+
 '''
 '''
 to test before you deploy
@@ -22,9 +32,11 @@ python application.py
 SEPERATE TERMINAL WINDOWS
 '''
 
-GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's up",)
+GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's",)
 
 GREETING_RESPONSES = ["'sup bro", "hey", "*nods*", "hey you get my snap?"]
+
+graph = GraphAPI(ACCESS_TOKEN)
 
 def response_handler(request):
 	try:
@@ -55,11 +67,13 @@ def check_for_greeting(sentence):
     words = sentence.split()
     for word in words:
     	if word in GREETING_KEYWORDS:
+    		print(graph.get('me/events'))
         	return GREETING_RESPONSES[random.randint(0, len(GREETING_RESPONSES)-1)]
-    return "I don't know what you said, fam."
+    return "I don't know what you said, fam." # change to get_facebook_data() and have it return a word (String)
 
 
 #def get_facebook_data():
+
 
 
 

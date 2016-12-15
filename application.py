@@ -24,11 +24,6 @@ def webhook():
         # Here messages are received, code for this is handled in bot.py.
         return bot.response_handler(request.get_json())
 
-
-
-        
-
-
 if __name__ == '__main__':
     application.debug = True
     port = int(os.environ.get("PORT", 5000))
