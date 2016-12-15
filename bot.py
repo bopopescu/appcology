@@ -33,9 +33,9 @@ SEPERATE TERMINAL WINDOWS
 '''
 
 GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's",)
-
 GREETING_RESPONSES = ["'sup bro", "hey", "*nods*", "hey you get my snap?"]
 
+# graph = facebook.GraphAPI(access_token=ACCESS_TOKEN, version='2.2')
 graph = GraphAPI(ACCESS_TOKEN)
 
 def response_handler(request):
@@ -67,15 +67,15 @@ def check_for_greeting(sentence):
     words = sentence.split()
     for word in words:
     	if word in GREETING_KEYWORDS:
-    		print(graph.get('me/events'))
         	return GREETING_RESPONSES[random.randint(0, len(GREETING_RESPONSES)-1)]
-    return "I don't know what you said, fam." # change to get_facebook_data() and have it return a word (String)
+    return get_facebook_data() # change to get_facebook_data() and have it return a word (String)
 
 
-#def get_facebook_data():
+def get_facebook_data():
 
+	events = graph.get('me/events')
+	data = []
+	for event in events['data']:
+    	data.append(event['name'])
 
-
-
-
-
+	return "Here are Emory's events: " + data
