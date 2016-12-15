@@ -26,8 +26,7 @@ git push origin master
 to test before you deploy
 source app/bin/activate (do only once in each terminal session)
 python application.py
-'''
-'''
+
 SEPERATE TERMINAL WINDOWS
 '''
 
@@ -66,13 +65,13 @@ def check_for_greeting(sentence):
     for word in words:
     	if word in GREETING_KEYWORDS:
         	return GREETING_RESPONSES[random.randint(0, len(GREETING_RESPONSES)-1)]
-    return get_facebook_data() # change to get_facebook_data() and have it return a word (String)
+    return get_facebook_data()
 
 
 def get_facebook_data():
 	events = graph.get('me/events')
 	data = []
 	for event in events['data']:
-    	data.append(event['name'])
+		data.append(event['name'])
 
 	return "Here are Emory's events: " + data
