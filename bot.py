@@ -31,7 +31,7 @@ SEPERATE TERMINAL WINDOWS
 '''
 
 GREETING_KEYWORDS = ("hello", "hi", "greetings", "sup", "what's",)
-GREETING_RESPONSES = ["'sup bro", "hey", "*nods*", "hey you get my snap?"]
+GREETING_RESPONSE = "Hey! Welcome to Emory Events. Ask me what's going on around Emory."
 
 ACCESS_TOKEN = 'EAAZAZC6jHx2vcBAEIwv2jUBIcXjlr2UgVvKHPJ9QgsWIhEggalW1K96YAuMXkKQMux9zjsWQfPUXWVsGK0ooWvGlwsZCoZAZClfpE6sv5Ntg9ECiJfruphS7gc9DQ1hy5DuGM9juzf7fb0eZCbUiHhhXrpJUELsNQucHOivKoLDgZDZD'
 graph = GraphAPI(ACCESS_TOKEN)
@@ -65,16 +65,19 @@ def check_for_greeting(sentence):
     words = sentence.split()
     for word in words:
     	if word in GREETING_KEYWORDS:
-        	return GREETING_RESPONSES[random.randint(0, len(GREETING_RESPONSES)-1)]
-    return get_facebook_data()
-
+        	return GREETING_RESPONSE
+        if 'event' in word:
+        	return get_facebook_data()
 
 def get_facebook_data():
 	events = graph.get('me/events')
-	# data = []
-	# for event in events['data']:
-	# 	data.append(event['name'])
-	firstEvent = events['data'][0]['name']
-	# event = graph.get_objects(ids=157056878108860, fields='attending_count,declined_count')
 
-	return "Here is your first Emory events: " + firstEvent
+	data = []
+	for event in events['data']:
+		data.append(event['name'])
+
+	# firstEvent = events['data'][0]['name']
+
+	dataString = str(data).strip('[]')
+
+	return "Here are your Emory events: " + dataString
