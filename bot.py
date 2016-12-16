@@ -74,10 +74,9 @@ def get_facebook_data():
 
 	data = []
 	for event in events['data']:
-		data.append(event['name'])
+		data.encode('utf-8').append(event['name'])
 
 	# firstEvent = events['data'][0]['name']
-	data.encode('utf-8')
 	dataString = str(data).strip('[]')
 
 	return "Here are your Emory events: " + dataString
